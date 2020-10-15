@@ -1,0 +1,38 @@
+header, footer{
+  background-color: #18453b;
+  color: white;
+  text-align: center;
+}
+
+header {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+#about-text {
+  margin-top: 0;
+  text-align: center;
+}
+
+#about {
+  margin: 0;
+}
+
+#e-board {
+  margin-top: 5rem;
+}
+
+.board-member {
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border: solid black 2px;
+  padding: .5rem;
+}
+
+.member-img {
+  height: 140px;
+  width: 140px;
+}

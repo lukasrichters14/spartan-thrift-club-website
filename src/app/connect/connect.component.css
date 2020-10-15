@@ -1,0 +1,43 @@
+header, footer {
+  background-color: #18453b;
+  color: white;
+}
+
+header {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  padding-left: 10rem;
+}
+
+h1 {
+  font-size: 5rem;
+  margin: 0 5rem auto 0;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+}
+
+.socials {
+  margin: auto;
+  text-align: center;
+}
+
+#signup {
+  margin-top: 4rem;
+}
+
+form {
+  display: block;
+}
+
+input {
+  margin: 1rem;
+}
+
+label {
+  font-size: 1.2rem;
+}

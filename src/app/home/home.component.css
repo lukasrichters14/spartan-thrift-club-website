@@ -20,6 +20,7 @@ header {
 
 #e-board {
   margin-top: 5rem;
+  text-align: center;
 }
 
 .board-member {
@@ -35,4 +36,39 @@ header {
 .member-img {
   height: 140px;
   width: 140px;
+  margin-right: 1rem;
+}
+
+@media (max-width: 810px){
+
+  .board-member {
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border: none;
+    padding: 1rem;
+  }
+
+  .board-member h3 {
+    margin-top: .5rem;
+  }
+
+  .member-img {
+    margin: auto;
+  }
+
+  #about {
+    margin-top: 1rem;
+  }
+
+  #about-text {
+    padding: 1rem;
+  }
+
+  #e-board {
+    margin-top: 2rem;
+  }
+
 }

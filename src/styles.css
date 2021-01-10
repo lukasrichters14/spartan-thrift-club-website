@@ -26,7 +26,7 @@ footer {
   text-align: center;
 }
 
-button {
+.main-button {
   margin-left: 4rem;
   margin-right: 4rem;
   font-size: 2rem;
@@ -62,5 +62,27 @@ p {
 }
 
 .textbox {
-  margin: 0 2rem auto 2rem;
+  margin: 0 auto auto auto;
+}
+
+@media (max-width: 810px){
+
+  .main {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  body {
+    background-image: none;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
 }

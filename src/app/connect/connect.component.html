@@ -3,45 +3,56 @@
   <div class="heading">
     <h1>Connect</h1>
     <div class="buttons">
-      <button routerLink="/home">Home</button>
-      <button routerLink="/events">Events</button>
+      <button class="main-button" routerLink="/home">Home</button>
+      <button class="main-button" routerLink="/events">Events</button>
     </div>
   </div>
 </header>
 
 <div class="main">
   <div class="socials">
-    <a href="https://discord.gg/WwYqnm" target="_blank">
-      <input type="image" src="/assets/discord.png" alt="Discord icon" width="40" height="40">
+    <a href="https://discord.gg/8EnJfpg4FQ" target="_blank">
+      <input type="image" src="/assets/discord.png" alt="Discord icon">
     </a>
     <a href="https://www.instagram.com/spartan.thrift.club/" target="_blank">
-      <input type="image" src="/assets/instagram.jpg" alt="Instagram icon" width="40" height="40">
+      <input type="image" src="/assets/instagram.png" alt="Instagram icon">
     </a>
-    <a>
-      <input type="image" src="/assets/twitter.png" alt="Twitter icon" width="40" height="40">
+    <a href="https://twitter.com/SpartanThrift" target="_blank">
+      <input type="image" src="/assets/twitter.png" alt="Twitter icon">
     </a>
-    <a>
-      <input type="image" src="/assets/facebook.jpg" alt="Facebook icon" width="40" height="40">
+    <a href="https://www.facebook.com/Spartan.Thrift.Club" target="_blank">
+      <input type="image" src="/assets/facebook.png" alt="Facebook icon">
     </a>
   </div>
 
-  <h2 id="signup">Email Sign-up</h2>
-  <h3>Get our email blasts!</h3>
-
-  <form>
+  <form [formGroup]="emailGroup">
+    <h2 id="signup">Email Sign-up</h2>
     <label>
-      First Name:
-      <input type="text" name="first_name">
+      First Name:<br>
+      <input type="text" name="first_name" formControlName="firstName" required="required">
     </label>
+    <p class="error"
+       *ngIf="!emailGroup.get('firstName').valid && (emailGroup.get('firstName').dirty || emailGroup.get('firstName').touched)">
+      This is a required field.
+    </p>
     <label>
-      Last Name:
-      <input type="text" name="last_name">
+      Last Name:<br>
+      <input type="text" name="last_name" formControlName="lastName" required="required">
     </label>
+    <p class="error"
+       *ngIf="!emailGroup.get('lastName').valid && (emailGroup.get('lastName').dirty || emailGroup.get('lastName').touched)">
+      This is a required field.
+    </p>
     <label>
-      Email:
-      <input type="text" name="email">
+      Email:<br>
+      <input type="text" name="email" formControlName="email" required="required" email="true">
     </label>
-    <input type="submit">
+    <p class="error"
+       *ngIf="!emailGroup.get('email').valid && (emailGroup.get('email').dirty || emailGroup.get('email').touched)">
+      Invalid email.
+    </p>
+    <button id="submit" type="submit" (click)="OnSubmit()"><b>Submit</b></button>
+    <p *ngIf="submitSuccess" id="submit-success">✔ Successfully added!</p>
   </form>
 </div>
 

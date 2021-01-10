@@ -26,18 +26,96 @@ h1 {
   text-align: center;
 }
 
+/*
+.socials input {
+  width: 55px;
+  height: 55px;
+}*/
+
 #signup {
-  margin-top: 4rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+#submit-success {
+  color: white;
+  margin-top: 2rem;
+  margin-bottom: 0;
+  background-color: #18453b;
+  padding: .5rem;
 }
 
 form {
-  display: block;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 40%;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+  border: solid black 3px;
+  padding: 2rem;
 }
 
 input {
   margin: 1rem;
 }
 
+form input {
+  margin: 1rem auto 1rem auto;
+  width: 100%;
+}
+
 label {
   font-size: 1.2rem;
+}
+
+#submit {
+  font-size: 1.2rem;
+  border-radius: 50px;
+  border: solid black 2px;
+  background-color: #18453b;
+  color: white;
+}
+
+.error {
+  font-size: 1rem;
+  margin-top: 0;
+  color: red;
+}
+
+@media (max-width: 775px) {
+
+  header {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .heading {
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+  }
+
+  .heading h1 {
+    margin: .5rem auto .5rem auto;
+  }
+
+  h2 {
+    margin: 0 auto 0 auto;
+  }
+
+  h3 {
+    margin: 0 auto 0 auto;
+  }
+
+  form {
+    width: 70%;
+    padding: 1rem;
+  }
+
+  #submit-success {
+    margin-top: 1rem;
+  }
 }

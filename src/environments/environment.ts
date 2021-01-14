@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: 'AIzaSyDFYXa1PyBecypafJ2VBtksYJKEuD4vjzo',
+    apiKey: 'AIzaSyA4OE-IszCdufVk7OxI6h9pv7KCvQzCo1U',
     authDomain: 'spartan-thrift-club.firebaseapp.com',
     databaseURL: 'https://spartan-thrift-club.firebaseio.com',
     projectId: 'spartan-thrift-club',

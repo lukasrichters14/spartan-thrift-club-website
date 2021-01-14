@@ -65,8 +65,6 @@ exports.onDataAdded = functions.database.ref('/email-list')
     change.after.forEach(snap1 =>{
       // @ts-ignore
       change.before.forEach(snap2 =>{
-        console.log(`1: ${snap1.key}`);
-        console.log(`2: ${snap2.key}`);
         if (snap1.key == snap2.key){
           changeFound = false;
           return true;

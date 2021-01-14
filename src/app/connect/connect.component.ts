@@ -10,6 +10,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class ConnectComponent implements OnInit {
 
   submitSuccess = false;
+  submitFailure = false;
 
   // Forms.
   emailGroup = new FormGroup({
@@ -31,8 +32,7 @@ export class ConnectComponent implements OnInit {
     }
   }
 
-  DatabaseInsert(): void
-  {
+  DatabaseInsert(): void {
     // Get form values
     const fName = this.emailGroup.value.firstName;
     const lName = this.emailGroup.value.lastName;
@@ -41,33 +41,33 @@ export class ConnectComponent implements OnInit {
 
     const name = `${fName} ${lName}`;
 
-    // Check database for name.
-    database.ref('email-list/' + name).once('value').then(snapshot => {
+    // Format email so it can be properly added to the database.
+    let tempEmail = '';
+    for (let i = 0; i < email.length; i++) {
+      if (email[i] == '.') {
+        tempEmail += '~';
+      } else {
+        tempEmail += email[i];
+      }
+    }
+
+    email = tempEmail;
+
+    // Check database for email.
+    database.ref('email-list/' + email).once('value').then(snapshot => {
       const result = snapshot.val();
 
-      // Name exists, so add to emails associated with that name.
-      // This way people with the same name can easily have their emails added.
-      if (result) {
-        let emails = result.split(', ');
-
-        let found = false;
-        for (let i = 0; i < emails.length; ++i){
-          if (emails[i] == email){
-            found = true;
-          }
-        }
-
-        // Email doesn't already exist.
-        if (!found) {
-          email += `, ${result}`;
-        }
+      // Email doesn't exist, add it.
+      if (!result) {
+        // Add email to the database.
+        database.ref('email-list/' + email).set(name).then((value) => {
+          this.emailGroup.reset();
+          this.submitSuccess = true;
+        });
       }
-
-      // Add email to the database.
-      database.ref('email-list/' + name).set(email).then((value) => {
-        this.emailGroup.reset();
-        this.submitSuccess = true;
-      });
+      else {
+        this.submitFailure = true;
+      }
     });
   }
 

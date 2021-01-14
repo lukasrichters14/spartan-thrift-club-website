@@ -45,6 +45,14 @@ h1 {
   padding: .5rem;
 }
 
+#submit-failure {
+  color: white;
+  margin-top: 2rem;
+  margin-bottom: 0;
+  background-color: darkred;
+  padding: .5rem;
+}
+
 form {
   display: flex;
   flex-flow: column nowrap;

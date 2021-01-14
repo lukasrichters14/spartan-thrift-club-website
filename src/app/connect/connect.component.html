@@ -53,6 +53,7 @@
     </p>
     <button id="submit" type="submit" (click)="OnSubmit()"><b>Submit</b></button>
     <p *ngIf="submitSuccess" id="submit-success">✔ Successfully added!</p>
+    <p *ngIf="submitFailure" id="submit-failure">Error: Email already exists.</p>
   </form>
 </div>
 

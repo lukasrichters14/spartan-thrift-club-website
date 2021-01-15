@@ -17,51 +17,26 @@ export class UnsubscribeComponent implements OnInit {
   UnsubscribeEmail(pageUrl: string): void {
     // Get query parameters.
     const params = pageUrl.substring(pageUrl.indexOf('?') + 1);
+    let email = params.substring(params.indexOf('=') + 1);
 
-    // Separate name.
-    let name = params.substring(0, params.indexOf('&'));
-    name = name.substring(name.indexOf('=') + 1);
-
-    // Remove html space characters.
-    let temp = '';
-    for (let i = 0; i < name.length; ++i) {
-      if (name[i] != "%" && name[i] != "2" && name[i] != "0") {
-        temp += name[i];
+    // Format email so it can query the database.
+    let tempEmail = '';
+    for (let i = 0; i < email.length; i++) {
+      if (email[i] == '.') {
+        tempEmail += '~';
       } else {
-        if (name[i] == '%') {
-          temp += ' ';
-        }
+        tempEmail += email[i];
       }
     }
-    name = temp;
 
-    // Separate email.
-    let email = params.substring(params.indexOf('&') + 1);
-    email = email.substring(email.indexOf('=') + 1);
+    email = tempEmail;
 
     let database = this.firebase.database;
 
-    // Check database for name.
-    database.ref('email-list/' + name).once('value').then(snapshot => {
-      // Get emails from database.
-      let result = snapshot.val();
-
-      // Separate emails.
-      let emails = result.split(', ');
-
-      // Add all emails that aren't the one we're trying to remove.
-      result = '';
-      for (let i = 0; i < emails.length; ++i) {
-        if (emails[i] != email) {
-          result += emails[i] + ', '
-        }
-      }
-
-      // Remove trailing ', '
-      result = result.substring(0, result.length - 2);
-
-      // Write to the database.
-      database.ref('email-list/' + name).set(result).then((value) => {
+    // Check database for email.
+    database.ref('email-list/' + email).once('value').then(snapshot => {
+      // Remove email from the database.
+      database.ref('email-list/' + email).remove().then((value) => {
         console.log("Removed");
       });
     });

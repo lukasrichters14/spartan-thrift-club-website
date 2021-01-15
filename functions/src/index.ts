@@ -1,5 +1,6 @@
 // This code adapted from: https://techtrench.org/firebase-functions-send-email/
 
+"use strict";
 import {Change, EventContext} from 'firebase-functions';
 import { DataSnapshot } from 'firebase-functions/lib/providers/database';
 
@@ -12,7 +13,7 @@ const gmailEmail = functions.config().gmail.login;
 const gmailPassword = functions.config().gmail.pass;
 
 // The alias will be used as the sending address.
-//const gmailAlias = 'noreply@spartanthrift.com';
+const gmailAlias = 'noreply@spartanthrift.com';
 
 admin.initializeApp();
 
@@ -32,11 +33,29 @@ function sendWelcomeEmail(name: string, email: string) {
     const subject = 'Welcome to Spartan Thrift Club!'
 
     const mailOptions = {
-        from: gmailEmail,
+        from: gmailAlias,
         to: email,
         subject: subject, // Subject line
-        text: 'Hello World!' // plain text body
-        //html: '!' // html body
+        html: '<html lang="en">\n' +
+          '<h1 style="text-align: center; background-color: #18453b; color: white; padding: 1rem">\n' +
+          '    Spartan Thrift Club</h1>\n' +
+          '<div style="margin: auto 3rem auto 3rem">\n' +
+          '<p style="text-align: center; font-size: 1.3rem; margin-top: 4rem"> Thank you for signing up for\n' +
+          '    email blasts from spartan thrift club! We\'ll be using these email blasts to communicate\n' +
+          '    important events, meetings, and other club information to our members. If you want to always\n' +
+          '    stay in contact, check out our\n' +
+          '    <a href="https://discord.gg/8EnJfpg4FQ" target="_blank">Discord</a> server!</p>\n' +
+          '<p style="text-align: center; font-size: 1.3rem">If you think this email was sent to you in error,\n' +
+          '    or you no longer want to receive emails from us, click the unsubscribe link at the bottom of the\n' +
+          '    page.</p>\n' +
+          '\n' +
+          '<p style="font-size: 1.3rem; margin-bottom: 0; margin-top: 5rem">Cheers,</p>\n' +
+          '<p style="font-size: 1.3rem; margin-top: 0">Spartan Thrift Club</p>\n' +
+          '\n' +
+          '<p style="text-align: center; margin-top: 4rem; font-size: 0.8rem">Don\'t want to receive emails from\n' +
+          '    us anymore? <a href="" target="_blank">Unsubscribe</a> from our email blasts.</p>\n' +
+          '</div>\n' +
+          '</html>' // html body
     };
 
     // Callback function to return status to firebase console.
@@ -82,7 +101,6 @@ exports.onDataAdded = functions.database.ref('/email-list')
     if (newData) {
       // Get name.
       let name = newData.val();
-      console.log(`name: ${name}`);
       if (name != null) {
         // Format email. All '~' characters should be replaced with '.'
         let email = newData.key;
@@ -97,7 +115,6 @@ exports.onDataAdded = functions.database.ref('/email-list')
         }
         // Get email.
         email = tempEmail;
-        console.log(`email: ${email}`);
         if (email != null) {
           // Send the welcome email.
           sendWelcomeEmail(name, email);

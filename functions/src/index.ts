@@ -30,7 +30,8 @@ function sendWelcomeEmail(name: string, email: string) {
     });
 
     // Email content.
-    const subject = 'Welcome to Spartan Thrift Club!'
+    const subject = 'Welcome to Spartan Thrift Club!';
+    const unsubscribeURL = `spartanthrift.com/#/unsubscribe?email=${email}`;
 
     const mailOptions = {
         from: gmailAlias,
@@ -41,7 +42,7 @@ function sendWelcomeEmail(name: string, email: string) {
           '    Spartan Thrift Club</h1>\n' +
           '<div style="margin: auto 3rem auto 3rem">\n' +
           '<p style="text-align: center; font-size: 1.3rem; margin-top: 4rem"> Thank you for signing up for\n' +
-          '    email blasts from spartan thrift club! We\'ll be using these email blasts to communicate\n' +
+          '    email blasts from Spartan Thrift Club! We\'ll be using these email blasts to communicate\n' +
           '    important events, meetings, and other club information to our members. If you want to always\n' +
           '    stay in contact, check out our\n' +
           '    <a href="https://discord.gg/8EnJfpg4FQ" target="_blank">Discord</a> server!</p>\n' +
@@ -53,7 +54,7 @@ function sendWelcomeEmail(name: string, email: string) {
           '<p style="font-size: 1.3rem; margin-top: 0">Spartan Thrift Club</p>\n' +
           '\n' +
           '<p style="text-align: center; margin-top: 4rem; font-size: 0.8rem">Don\'t want to receive emails from\n' +
-          '    us anymore? <a href="" target="_blank">Unsubscribe</a> from our email blasts.</p>\n' +
+          `    us anymore? <a href="${unsubscribeURL}" target="_blank">Unsubscribe</a> from our email blasts.</p>\n` +
           '</div>\n' +
           '</html>' // html body
     };

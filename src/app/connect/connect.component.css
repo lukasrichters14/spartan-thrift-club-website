@@ -91,6 +91,22 @@ label {
   color: red;
 }
 
+#join-button {
+  background-color: #18453b;
+  color: white;
+  text-align: center;
+  margin: 5rem auto 7rem auto;
+  padding: .5rem;
+  text-decoration: none;
+}
+
+.centered-button {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
 @media (max-width: 775px) {
 
   header {

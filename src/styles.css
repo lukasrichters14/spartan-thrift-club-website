@@ -65,6 +65,14 @@ p {
   margin: 0 auto auto auto;
 }
 
+#head404 {
+  color: #18453b;
+}
+
+#text404 {
+  color: #18453b;
+}
+
 @media (max-width: 810px){
 
   .main {

@@ -4,6 +4,7 @@ import {HomeComponent} from './home/home.component';
 import {EventsComponent} from './events/events.component';
 import {ConnectComponent} from './connect/connect.component';
 import {UnsubscribeComponent} from './unsubscribe/unsubscribe.component';
+import {ErrorComponent} from './error/error.component';
 
 
 const routes: Routes = [
@@ -11,7 +12,8 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'events', component: EventsComponent},
   {path: 'connect', component: ConnectComponent},
-  {path: 'unsubscribe', component: UnsubscribeComponent}
+  {path: 'unsubscribe', component: UnsubscribeComponent},
+  {path: '**', pathMatch: 'full', component:ErrorComponent}
 ];
 
 @NgModule({

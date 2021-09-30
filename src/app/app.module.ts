@@ -14,6 +14,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import {ReactiveFormsModule} from '@angular/forms';
 import { UnsubscribeComponent } from './unsubscribe/unsubscribe.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { UnsubscribeComponent } from './unsubscribe/unsubscribe.component';
     HomeComponent,
     EventsComponent,
     ConnectComponent,
-    UnsubscribeComponent
+    UnsubscribeComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
